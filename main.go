@@ -30,7 +30,7 @@ func main() {
 
 	notifyC := make(chan os.Signal)
 	signal.Notify(notifyC, syscall.SIGINT, syscall.SIGTERM)
-	<-notifyC
+	<-notifyC // block, waiting for signal
 
 	close(closing)
 	go doClean(closed)
